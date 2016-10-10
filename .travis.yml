@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "6"
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+before_script:
+  - npm install -g gulp
+  - npm run build
+script: gulp test
+
+before_deploy: "rm -rf node_modules/ && sed -i.bak '/build/d' ./.gitignore"
+deploy:
+  provider: azure_web_apps
+  site: graphql-apollo-template
+  skip_cleanup: true
