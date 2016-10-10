@@ -11,7 +11,7 @@
     "build-server": "babel -d ./build ./src",
     "clean": "rm -rf build && mkdir build",
 
-    "test": "gulp test",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
